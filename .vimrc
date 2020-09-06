@@ -39,6 +39,7 @@ augroup end
 
 " split window
 set splitright
+set splitbelow
 
 " clear search result
 nnoremap <silent> <CR> :noh<CR><CR>
@@ -98,7 +99,7 @@ let NERDTreeQuitOnOpen=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 let NERDTreeAutoDeleteBuffer=1
-map <Leader>n :NERDTreeToggle<CR>
+map <silent> <Leader>n :NERDTreeToggle<CR>
 " open NERDTree when open a directory
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
