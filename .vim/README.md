@@ -1,4 +1,0 @@
-# my-vimrc
-My vimrc.
-
-I DO NOT OWN ANY COLORSCHEMES OR PLUGGINS IN THIS REPO.
