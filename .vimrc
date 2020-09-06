@@ -24,7 +24,6 @@ set smarttab
 set shiftround
 
 " resursive file searching
-set nocompatible
 set path+=**
 set wildmenu
 set wildignore+=*/node_modules/**,*/.git/**,*/dist/**,*/build/**,*/output/**
