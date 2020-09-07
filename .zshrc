@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/chengzeli/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -105,7 +105,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # enable vi mode
-source "$HOME/.zsh/zsh-vim-mode.plugin.zsh"
+source "$HOME/.oh-my-zsh/plugins/zsh-vim-mode.plugin.zsh"
 
 # dotfiles config
 alias config="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
