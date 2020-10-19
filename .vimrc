@@ -18,6 +18,10 @@ set softtabstop=2
 set autoindent
 set smartindent
 
+" hide status and command
+set noshowmode
+set noshowcmd
+
 " tab
 set expandtab
 set smarttab
@@ -87,6 +91,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'ianks/vim-tsx'
+Plug 'vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'prettier/vim-prettier', {'do': 'yarn install' }
 
