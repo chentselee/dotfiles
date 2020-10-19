@@ -6,6 +6,7 @@ set noswapfile
 set nobackup
 set novisualbell
 set noerrorbells
+set updatetime=100 " for GitGutter
 
 " undo dir
 set undodir=~/.vim/undodir
@@ -94,6 +95,9 @@ Plug 'ianks/vim-tsx'
 Plug 'vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'prettier/vim-prettier', {'do': 'yarn install' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
@@ -118,7 +122,7 @@ let g:prettier#config#trailing_comma = 'all'
 autocmd BufWritePre *.tsx,*.ts,*.js,*.jsx,*.css,*.scss,*.html,*.vue Prettier
 
 " Coc
-let g:coc_global_extensions = ['coc-tsserver','coc-emmet','coc-html','coc-json','coc-pairs','coc-css']
+let g:coc_global_extensions = ['coc-tsserver','coc-emmet','coc-html','coc-json','coc-pairs','coc-css','coc-eslint']
 
 " better on-enter
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
@@ -140,3 +144,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" fzf
+nnoremap <Leader>f :Files .<CR>
+nnoremap <Leader>g :GFiles?<CR>
