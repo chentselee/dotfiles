@@ -148,3 +148,9 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " fzf
 nnoremap <Leader>f :Files .<CR>
 nnoremap <Leader>g :GFiles?<CR>
+
+" camelCaseMotion
+map <silent> \w <Plug>CamelCaseMotion_w
+map <silent> \b <Plug>CamelCaseMotion_b
+map <silent> \e <Plug>CamelCaseMotion_e
+map <silent> \ge <Plug>CamelCaseMotion_ge
