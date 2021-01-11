@@ -6,7 +6,7 @@ set noswapfile
 set nobackup
 set novisualbell
 set noerrorbells
-set updatetime=100 " for GitGutter
+set updatetime=50 " for GitGutter
 
 " undo dir
 set undodir=~/.vim/undodir
@@ -33,6 +33,10 @@ set path+=**
 set wildmenu
 set wildignore+=*/node_modules/**,*/.git/**,*/dist/**,*/build/**,*/output/**
 
+" search
+set incsearch
+set nohlsearch
+
 "relative line number on command / absolute on insert
 set number relativenumber
 augroup numberToggle
@@ -45,19 +49,20 @@ augroup end
 set splitright
 set splitbelow
 
-" clear search result
-nnoremap <silent> <CR> :noh<CR><CR>
-
 " clipboard
 set clipboard=unnamedplus
 
 " mouse
 set mouse=a
 
+" keep buffers loaded
+set hidden
+
 " visual
 set scrolloff=10
 set wrap
 set showmode
+set guicursor=
 syntax on
 filetype on
 set background=dark
@@ -74,7 +79,7 @@ nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap H ^
 nnoremap L $
 " select all
-map <Leader>a ggVG 
+nnoremap <Leader>a ggVG 
 
 " Plug
 call plug#begin('~/.vim/plugged')
@@ -139,11 +144,11 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nnoremap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> gy <Plug>(coc-type-definition)
+nnoremap <silent> gr <Plug>(coc-references)
+nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
+nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " fzf
 nnoremap <Leader>f :Files .<CR>
