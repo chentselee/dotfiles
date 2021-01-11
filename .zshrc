@@ -107,6 +107,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# hide hostname
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    # prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+  fi
+}
+
 # enable vi mode
 source "$HOME/.oh-my-zsh/plugins/zsh-vim-mode.plugin.zsh"
 
