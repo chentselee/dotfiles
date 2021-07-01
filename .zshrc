@@ -102,6 +102,9 @@ alias la="ls -la"
 alias y="yarn"
 alias ys="yarn start"
 alias yt="yarn test"
+alias p="pnpm"
+alias ps="pnpm start"
+alias pt="pnpm test"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -128,3 +131,5 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+export PATH="$HOME/.lucy/bin:$PATH"
