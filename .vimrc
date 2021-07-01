@@ -63,6 +63,9 @@ set scrolloff=10
 set wrap
 set showmode
 set guicursor=
+if (has("termguicolors"))
+ set termguicolors
+endif
 syntax on
 filetype on
 set background=dark
