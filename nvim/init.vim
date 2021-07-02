@@ -21,6 +21,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'tpope/vim-fugitive'
     Plug 'tomtom/tcomment_vim'
     Plug 'bkad/CamelCaseMotion'
+    Plug 'jiangmiao/auto-pairs'
 
     Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
@@ -37,8 +38,8 @@ set updatetime=50 " for GitGutter
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 
 " undo dir
-set undodir=~/.vim/undodir
-set undofile
+" set undodir=~/.vim/undodir
+" set undofile
 
 " indentation
 set tabstop=2
