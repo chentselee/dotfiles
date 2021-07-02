@@ -150,13 +150,6 @@ nnoremap <Leader>rg :lua require'telescope.builtin'.live_grep{}<CR>
 nnoremap <Leader>cs :lua require'telescope.builtin'.colorscheme{}<CR>
 
 
-" >> setup nerdcomment key bindings
-let g:NERDCreateDefaultMappings = 0
-let g:NERDSpaceDelims = 1
-
-xnoremap <Leader>ci :call NERDComment('n', 'toggle')<CR>
-nnoremap <Leader>ci :call NERDComment('n', 'toggle')<CR>
-
 " >> Lsp key bindings
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
