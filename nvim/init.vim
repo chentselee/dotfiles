@@ -111,7 +111,6 @@ set t_Co=256
 let g:mapleader=" "
 
 " map
-let mapleader=' '
 nnoremap <Leader>b :b#<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>s :w<CR>
@@ -160,7 +159,6 @@ nnoremap <Leader>ci :call NERDComment('n', 'toggle')<CR>
 
 " >> Lsp key bindings
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> <C-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
