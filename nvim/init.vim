@@ -117,6 +117,8 @@ nnoremap <Leader>w <C-W>
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap H ^
 nnoremap L $
+tnoremap <Leader><Esc> <C-\><C-N>
+tnoremap <Leader>` <C-\><C-N>:b#<CR>
 " select all
 nnoremap <Leader>a ggVG 
 
