@@ -3,6 +3,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-telescope/telescope.nvim'
+
     Plug 'neovim/nvim-lspconfig'
     Plug 'kabouzeid/nvim-lspinstall'
     Plug 'glepnir/lspsaga.nvim'
@@ -13,24 +14,16 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'glepnir/galaxyline.nvim', { 'branch': 'main' }
     Plug 'kyazdani42/nvim-web-devicons'  " needed for galaxyline icons
 
-    Plug 'NLKNguyen/papercolor-theme'
-
     Plug 'mattn/emmet-vim'
-
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
-
     Plug 'tpope/vim-eunuch'
     Plug 'tpope/vim-fugitive'
-
     Plug 'tomtom/tcomment_vim'
-
     Plug 'bkad/CamelCaseMotion'
+
+    Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
-
-
-
-colorscheme PaperColor
 
 " base
 language en_US
@@ -105,6 +98,7 @@ filetype on
 set background=dark
 set t_Co=256
 " colorscheme OceanicNext
+colorscheme PaperColor
 
 " set leader key to space
 let g:mapleader=" "
