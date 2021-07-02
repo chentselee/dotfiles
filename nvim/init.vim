@@ -14,7 +14,6 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'kyazdani42/nvim-web-devicons'  " needed for galaxyline icons
 
     Plug 'NLKNguyen/papercolor-theme'
-    Plug 'nikvdp/neomux'
 
     Plug 'mattn/emmet-vim'
 
