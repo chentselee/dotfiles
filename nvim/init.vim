@@ -117,7 +117,23 @@ tnoremap <Leader>` <C-\><C-N>:b#<CR>
 nnoremap <Leader>a ggVG 
 " search and replace under cursor
 nnoremap <C-S> :%s/<C-R><C-W>/<C-R><C-W>/g<Left><Left><Left>
-
+" toggle quickfix and location list
+function! ToggleQuickFix()
+  if empty(filter(getwininfo(), 'v:val.quickfix'))
+    copen
+  else
+    cclose
+  endif
+endfunction
+nnoremap <silent> <Leader>cc :call ToggleQuickFix()<CR>
+function! ToggleLocationList()
+  if empty(filter(getwininfo(), 'v:val.loclist'))
+    lopen
+  else
+    lclose
+  endif
+endfunction
+nnoremap <silent> <Leader>cl :call ToggleLocationList()<CR>
 
 " >> Telescope bindings
 nnoremap <Leader>pp :lua require'telescope.builtin'.builtin{}<CR>
