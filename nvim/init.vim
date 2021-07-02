@@ -121,6 +121,8 @@ tnoremap <Leader><Esc> <C-\><C-N>
 tnoremap <Leader>` <C-\><C-N>:b#<CR>
 " select all
 nnoremap <Leader>a ggVG 
+" search and replace under cursor
+nnoremap <C-S> :%s/<C-R><C-W>/<C-R><C-W>/g<Left><Left><Left>
 
 
 " >> Telescope bindings
