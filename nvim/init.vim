@@ -125,7 +125,7 @@ function! ToggleQuickFix()
     cclose
   endif
 endfunction
-nnoremap <silent> <Leader>cc :call ToggleQuickFix()<CR>
+nnoremap <silent> <Leader>cq :call ToggleQuickFix()<CR>
 function! ToggleLocationList()
   if empty(filter(getwininfo(), 'v:val.loclist'))
     lopen
