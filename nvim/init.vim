@@ -137,7 +137,7 @@ endfunction
 nnoremap <silent> <Leader>cl :call ToggleLocationList()<CR>
 
 " >> auto format
-autocmd BufWritePre * :lua vim.lsp.buf.formatting_sync()
+autocmd BufWritePre * :lua vim.lsp.buf.formatting_seq_sync()
 
 " >> Telescope bindings
 nnoremap <Leader>pp :lua require'telescope.builtin'.builtin{}<CR>
