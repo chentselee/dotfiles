@@ -133,3 +133,6 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 export PATH="$HOME/.lucy/bin:$PATH"
+
+# git locale
+alias git='LANG=en_US.UTF-8 git'
