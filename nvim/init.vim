@@ -1,4 +1,4 @@
-" >> load plugins
+" load plugins
 call plug#begin(stdpath('data') . 'vimplug')
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-lua/popup.nvim'
@@ -7,7 +7,15 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'neovim/nvim-lspconfig'
     Plug 'kabouzeid/nvim-lspinstall'
     Plug 'glepnir/lspsaga.nvim'
-    Plug 'hrsh7th/nvim-compe'
+
+    Plug 'onsails/lspkind-nvim'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-vsnip'
+    Plug 'hrsh7th/vim-vsnip'
+    Plug 'hrsh7th/cmp-path'
+
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
@@ -23,7 +31,8 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'bkad/CamelCaseMotion'
     Plug 'jiangmiao/auto-pairs'
 
-    Plug 'NLKNguyen/papercolor-theme'
+    " Plug 'NLKNguyen/papercolor-theme'
+    Plug 'Mofiqul/vscode.nvim'
 call plug#end()
 
 " base
@@ -98,8 +107,9 @@ syntax on
 filetype on
 set background=dark
 set t_Co=256
-" colorscheme OceanicNext
-colorscheme PaperColor
+" colorscheme
+let g:vscode_style = "dark"
+colorscheme vscode
 
 " set leader key to space
 let g:mapleader=" "
@@ -118,6 +128,12 @@ tnoremap <Leader>` <C-\><C-N>:b#<CR>
 nnoremap <Leader>a ggVG 
 " search and replace under cursor
 nnoremap <C-S> :%s/<C-R><C-W>/<C-R><C-W>/g<Left><Left><Left>
+" navigate quickfix list
+nnoremap <Leader>cqn :cnext<CR>
+nnoremap <Leader>cqp :cprev<CR>
+" navigate location list
+nnoremap <Leader>cln :lnext<CR>
+nnoremap <Leader>clp :lprev<CR>
 " toggle quickfix and location list
 function! ToggleQuickFix()
   if empty(filter(getwininfo(), 'v:val.quickfix'))
@@ -126,7 +142,7 @@ function! ToggleQuickFix()
     cclose
   endif
 endfunction
-nnoremap <silent> <Leader>cq :call ToggleQuickFix()<CR>
+nnoremap <silent> <Leader>cqt :call ToggleQuickFix()<CR>
 function! ToggleLocationList()
   if empty(filter(getwininfo(), 'v:val.loclist'))
     lopen
@@ -134,40 +150,46 @@ function! ToggleLocationList()
     lclose
   endif
 endfunction
-nnoremap <silent> <Leader>cl :call ToggleLocationList()<CR>
+nnoremap <silent> <Leader>clt :call ToggleLocationList()<CR>
 
-" >> auto format
+" auto format
 autocmd BufWritePre * :lua vim.lsp.buf.formatting_seq_sync()
 
-" >> Telescope bindings
-nnoremap <Leader>pp :lua require'telescope.builtin'.builtin{}<CR>
+" Telescope bindings
+nnoremap <Leader>pp <cmd>lua require'telescope.builtin'.builtin{}<CR>
 
-" most recentuly used files
-nnoremap <Leader>m :lua require'telescope.builtin'.oldfiles{}<CR>
+" most recently used files
+nnoremap <Leader>m <cmd>lua require'telescope.builtin'.oldfiles{}<CR>
 
 " find buffer
-nnoremap ; :lua require'telescope.builtin'.buffers{}<CR>
+nnoremap ; <cmd>lua require'telescope.builtin'.buffers{}<CR>
 
 " find in current buffer
-nnoremap <Leader>/ :lua require'telescope.builtin'.current_buffer_fuzzy_find{}<CR>
+nnoremap <Leader>/ <cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find{}<CR>
 
 " bookmarks
-nnoremap <Leader>' :lua require'telescope.builtin'.marks{}<CR>
+nnoremap <Leader>' <cmd>lua require'telescope.builtin'.marks{}<CR>
 
 " git files
-nnoremap <Leader>f :lua require'telescope.builtin'.git_files{}<CR>
+nnoremap <Leader>f <cmd>lua require'telescope.builtin'.git_files{}<CR>
 
 " all files
-nnoremap <Leader>bfs :lua require'telescope.builtin'.find_files{}<CR>
+nnoremap <Leader>bfs <cmd>lua require'telescope.builtin'.find_files{}<CR>
 
 " ripgrep like grep through dir
-nnoremap <Leader>rg :lua require'telescope.builtin'.live_grep{}<CR>
+nnoremap <Leader>rg <cmd>lua require'telescope.builtin'.live_grep{}<CR>
 
 " pick color scheme
-nnoremap <Leader>cs :lua require'telescope.builtin'.colorscheme{}<CR>
+nnoremap <Leader>cs <cmd>lua require'telescope.builtin'.colorscheme{}<CR>
 
 
-" >> Lsp key bindings
+let g:NERDCreateDefaultMappings = 0
+let g:NERDSpaceDelims = 1
+
+xnoremap <Leader>ci <cmd>call NERDComment('n', 'toggle')<CR>
+nnoremap <Leader>ci <cmd>call NERDComment('n', 'toggle')<CR>
+
+" Lsp key bindings
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
@@ -182,13 +204,13 @@ nnoremap <silent> ga    <cmd>Lspsaga code_action<CR>
 xnoremap <silent> ga    <cmd>Lspsaga range_code_action<CR>
 nnoremap <silent> gs    <cmd>Lspsaga signature_help<CR>
 
-" >> camelCaseMotion
+" camelCaseMotion
 map <silent> \w <Plug>CamelCaseMotion_w
 map <silent> \b <Plug>CamelCaseMotion_b
 map <silent> \e <Plug>CamelCaseMotion_e
 map <silent> \ge <Plug>CamelCaseMotion_ge
 
-" >> emmet-vim
+" emmet-vim
 let g:user_emmet_mode='i'
 
 lua <<EOF
