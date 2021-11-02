@@ -68,7 +68,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git react-native zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git react-native zsh-autosuggestions zsh-syntax-highlighting zsh-vim-mode z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -113,12 +113,9 @@ export NVM_DIR="$HOME/.nvm"
 # hide hostname
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "⚡️"
+    prompt_segment black default "➤"
   fi
 }
-
-# enable vi mode
-source "$HOME/.oh-my-zsh/plugins/zsh-vim-mode.plugin.zsh"
 
 # dotfiles config
 alias config="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
