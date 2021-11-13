@@ -54,8 +54,15 @@ vim.lsp.protocol.CompletionItemKind = {
 }
 
 local prettier = {
-  formatCommand = "./node_modules/.bin/prettier --stdin --stdin-filepath ${INPUT}",
-  formatStdin = true
+  formatCommand = 'prettierd "${INPUT}"',
+  formatStdin = true,
+  env = {
+    "PRETTIERD_LOCAL_PRETTIER_ONLY=true",
+    string.format(
+      "PRETTIERD_DEFAULT_CONFIG=%s",
+      vim.fn.expand("~/.config/nvim/utils/linter-config/.prettierrc.json")
+    )
+  }
 }
 
 local eslint_d = {
