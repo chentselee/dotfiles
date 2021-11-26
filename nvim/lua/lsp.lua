@@ -97,6 +97,7 @@ local servers = {
   html = {
     filetypes = {"html"}
   },
+  json = {},
   tailwindcss = {},
   efm = {
     init_options = {documentFormatting = true},
