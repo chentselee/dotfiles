@@ -93,12 +93,14 @@ local servers = {
   css = {},
   go = {},
   rust = {},
+  vue = {},
   svelte = {},
   html = {
     filetypes = {"html"}
   },
   json = {},
   tailwindcss = {},
+  elixir = {},
   efm = {
     init_options = {documentFormatting = true},
     filetypes = {
@@ -110,7 +112,9 @@ local servers = {
       "typescriptreact",
       "javascriptreact",
       "json",
-      "lua"
+      "lua",
+      "vue",
+      "svelte"
     },
     settings = {
       languages = {
@@ -121,6 +125,8 @@ local servers = {
         typescript = {eslint_d, prettier},
         javascriptreact = {eslint_d, prettier},
         typescriptreact = {eslint_d, prettier},
+        vue = {eslint_d, prettier},
+        svelte = {eslint_d, prettier},
         json = {prettier},
         lua = {luafmt}
       }
