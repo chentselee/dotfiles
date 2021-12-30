@@ -106,6 +106,17 @@ alias p="pnpm"
 alias ps="pnpm start"
 alias pt="pnpm test"
 
+# git locale
+alias git='LANG=en_US.UTF-8 git'
+
+# yarn
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/chengzeli/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
+# nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -127,9 +138,3 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-export PATH="$HOME/.lucy/bin:$PATH"
-
-# git locale
-alias git='LANG=en_US.UTF-8 git'
