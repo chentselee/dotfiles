@@ -27,6 +27,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-eunuch'
     Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
     Plug 'tomtom/tcomment_vim'
     Plug 'bkad/CamelCaseMotion'
     Plug 'jiangmiao/auto-pairs'
