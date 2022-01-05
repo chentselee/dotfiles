@@ -109,6 +109,9 @@ alias pt="pnpm test"
 # git locale
 alias git='LANG=en_US.UTF-8 git'
 
+# temporary fix for using prebuild neovim birnary instead of homebrew
+export PATH="$HOME/nvim-osx64/bin:$PATH"
+
 # yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
