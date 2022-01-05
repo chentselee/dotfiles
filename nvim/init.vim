@@ -7,6 +7,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'neovim/nvim-lspconfig'
     Plug 'kabouzeid/nvim-lspinstall'
     Plug 'glepnir/lspsaga.nvim'
+    Plug 'jose-elias-alvarez/null-ls.nvim'
 
     Plug 'onsails/lspkind-nvim'
     Plug 'hrsh7th/cmp-nvim-lsp'

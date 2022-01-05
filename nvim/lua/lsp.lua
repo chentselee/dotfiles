@@ -53,26 +53,26 @@ vim.lsp.protocol.CompletionItemKind = {
   "   (TypeParameter)"
 }
 
-local prettier = {
-  formatCommand = 'prettierd "${INPUT}"',
-  formatStdin = true,
-  env = {
-    "PRETTIERD_LOCAL_PRETTIER_ONLY=true",
-    string.format(
-      "PRETTIERD_DEFAULT_CONFIG=%s",
-      vim.fn.expand("~/.config/nvim/utils/linter-config/.prettierrc.json")
-    )
-  }
-}
-
-local eslint_d = {
-  lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
-  lintStdin = true,
-  lintFormats = {"%f:%l:%c: %m"},
-  lintIgnoreExitCode = true,
-  formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
-  formatStdin = true
-}
+-- local prettier = {
+--   formatCommand = 'prettierd "${INPUT}"',
+--   formatStdin = true,
+--   env = {
+--     "PRETTIERD_LOCAL_PRETTIER_ONLY=true",
+--     string.format(
+--       "PRETTIERD_DEFAULT_CONFIG=%s",
+--       vim.fn.expand("~/.config/nvim/utils/linter-config/.prettierrc.json")
+--     )
+--   }
+-- }
+--
+-- local eslint_d = {
+--   lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
+--   lintStdin = true,
+--   lintFormats = {"%f:%l:%c: %m"},
+--   lintIgnoreExitCode = true,
+--   formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
+--   formatStdin = true
+-- }
 
 local luafmt = {
   formatCommand = "luafmt -i 2 -l 80 --stdin",
@@ -99,7 +99,11 @@ local servers = {
     filetypes = {"html"}
   },
   json = {},
-  tailwindcss = {},
+  tailwindcss = {
+    settings = {
+      rootMarkers = {"tailwind.config.js"}
+    }
+  },
   elixir = {},
   efm = {
     init_options = {documentFormatting = true},
@@ -118,17 +122,7 @@ local servers = {
     },
     settings = {
       languages = {
-        html = {prettier},
-        css = {prettier},
-        scss = {prettier},
-        javascript = {eslint_d, prettier},
-        typescript = {eslint_d, prettier},
-        javascriptreact = {eslint_d, prettier},
-        typescriptreact = {eslint_d, prettier},
-        vue = {eslint_d, prettier},
-        svelte = {eslint_d, prettier},
-        json = {prettier},
-        lua = {luafmt}
+        lua = {luafmt},
       }
     }
   }
@@ -145,6 +139,13 @@ local function setup_servers()
     )
   end
 end
+
+require("null-ls").setup({
+  sources = {
+    require("null-ls").builtins.diagnostics.eslint_d,
+    require("null-ls").builtins.formatting.prettierd,
+  }
+})
 
 setup_servers()
 
