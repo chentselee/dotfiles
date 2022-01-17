@@ -93,7 +93,11 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
+
+command_exists() {
+  command -v "$1" >/dev/null 2>&1
+}
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -105,6 +109,16 @@ alias yt="yarn test"
 alias p="pnpm"
 alias ps="pnpm start"
 alias pt="pnpm test"
+if command_exists bat; then
+  alias cat="bat -p"
+fi
+if command_exists exa; then
+  alias ls="exa -l"
+  alias la="exa -la"
+fi
+if command_exists rg; then
+  alias grep="rg"
+fi
 
 # git locale
 alias git='LANG=en_US.UTF-8 git'
