@@ -1,155 +1,89 @@
--- lsp setup
--- Set Default Prefix.
--- Note: You can set a prefix per lsp server in the lv-globals.lua file
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
-  vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics,
-  {
-    virtual_text = {
-      prefix = "",
-      spacing = 0
-    },
-    signs = true,
-    underline = true
-  }
-)
-
--- -- uncomment below to enable nerd-font based icons for diagnostics in the
--- -- gutter, see:
--- -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#change-diagnostic-symbols-in-the-sign-column-gutter
-local signs = {Error = " ", Warning = " ", Hint = " ", Information = " "}
-
-for type, icon in pairs(signs) do
-  local hl = "LspDiagnosticsSign" .. type
-  vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
-end
-
--- symbols for autocomplete
-vim.lsp.protocol.CompletionItemKind = {
-  "   (Text) ",
-  "   (Method)",
-  "   (Function)",
-  "   (Constructor)",
-  " ﴲ  (Field)",
-  "[] (Variable)",
-  "   (Class)",
-  " ﰮ  (Interface)",
-  "   (Module)",
-  " P (Property)",
-  "   (Unit)",
-  "   (Value)",
-  " E (Enum)",
-  "   (Keyword)",
-  "   (Snippet)",
-  "   (Color)",
-  "   (File)",
-  "   (Reference)",
-  "   (Folder)",
-  "   (EnumMember)",
-  " ﲀ  (Constant)",
-  " ﳤ  (Struct)",
-  "   (Event)",
-  "   (Operator)",
-  "   (TypeParameter)"
-}
-
-local prettier = {
-  formatCommand = 'prettierd "${INPUT}"',
-  formatStdin = true,
-  env = {
-    "PRETTIERD_LOCAL_PRETTIER_ONLY=true",
-    string.format(
-      "PRETTIERD_DEFAULT_CONFIG=%s",
-      vim.fn.expand("~/.config/nvim/utils/linter-config/.prettierrc.json")
-    )
-  }
-}
-
-local eslint_d = {
-  lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
-  lintStdin = true,
-  lintFormats = {"%f:%l:%c: %m"},
-  lintIgnoreExitCode = true,
-  formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
-  formatStdin = true
-}
-
-local luafmt = {
-  formatCommand = "luafmt -i 2 -l 80 --stdin",
-  formatStdin = true
-}
-
-local servers = {
-  lua = {
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = {"vim"}
+local lsp_installer = require("nvim-lsp-installer")
+lsp_installer.on_server_ready(function(server)
+  local opts = {}
+  if server.name == "sumneko_lua" then
+    opts = {
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { 'vim' }
+          }
         }
       }
     }
+  end
+  server:setup(opts)
+end)
+
+local keymap = vim.api.nvim_set_keymap
+local function nkeymap(key, map)
+  keymap('n', key, map, { noremap = true })
+end
+
+-- auto format
+vim.cmd([[
+autocmd BufWritePre * :lua vim.lsp.buf.formatting_seq_sync()
+]])
+
+-- mappings
+nkeymap('gd', ':lua vim.lsp.buf.definition()<cr>')
+nkeymap('gD', ':lua vim.lsp.buf.declaration()<cr>')
+nkeymap('gi', ':lua vim.lsp.buf.implementation()<cr>')
+nkeymap('gr', ':lua vim.lsp.buf.references()<cr>')
+nkeymap('gt', ':lua vim.lsp.buf.type_definition()<cr>')
+nkeymap('K', ':lua vim.lsp.buf.hover()<cr>')
+nkeymap('<leader>ca', ':lua vim.lsp.buf.code_action()<cr>')
+nkeymap('<leader>rn', ':lua vim.lsp.buf.rename()<cr>')
+nkeymap('<leader>mf', ':lua vim.lsp.buf.formatting()<cr>')
+nkeymap('<leader>Wa', ':lua vim.lsp.buf.add_workspace_folder()<cr>')
+nkeymap('<leader>Wr', ':lua vim.lsp.buf.remove_workspace_folder()<cr>')
+nkeymap('<leader>Wl', ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>')
+
+-- completion
+local cmp = require("cmp")
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
   },
-  typescript = {},
-  css = {},
-  go = {},
-  rust = {},
-  vue = {},
-  svelte = {},
-  html = {
-    filetypes = {"html"}
+  mapping = {
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    ['<C-y>'] = cmp.config.disable,
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+    -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
   },
-  json = {},
-  tailwindcss = {},
-  elixir = {},
-  efm = {
-    init_options = {documentFormatting = true},
-    filetypes = {
-      "html",
-      "css",
-      "scss",
-      "javascript",
-      "typescript",
-      "typescriptreact",
-      "javascriptreact",
-      "json",
-      "lua",
-      "vue",
-      "svelte"
-    },
-    settings = {
-      languages = {
-        html = {prettier},
-        css = {prettier},
-        scss = {prettier},
-        javascript = {eslint_d, prettier},
-        typescript = {eslint_d, prettier},
-        javascriptreact = {eslint_d, prettier},
-        typescriptreact = {eslint_d, prettier},
-        vue = {eslint_d, prettier},
-        svelte = {eslint_d, prettier},
-        json = {prettier},
-        lua = {luafmt}
-      }
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    {
+      { name = 'buffer' }
     }
+  })
+})
+
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
   }
+})
+
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
+
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+require('lspconfig')['sumneko_lua'].setup {
+  capabilities = capabilities
 }
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-local function setup_servers()
-  require "lspinstall".setup()
-  for server, config in pairs(servers) do
-    require "lspconfig"[server].setup(
-      vim.tbl_deep_extend("force", {capabilities = capabilities}, config)
-    )
-  end
-end
-
-setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require "lspinstall".post_install_hook = function()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
