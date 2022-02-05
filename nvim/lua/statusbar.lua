@@ -16,7 +16,8 @@ local colors = {
   light_blue = "#9CDCFE",
   red = "#D16969",
   error_red = "#F44747",
-  info_yellow = "#FFCC66"
+  info_yellow = "#FFCC66",
+  white = "#FFFFFF",
 }
 local condition = require("galaxyline.condition")
 local gls = gl.section
@@ -67,7 +68,7 @@ gls.left[2] = {
     condition = condition.check_git_workspace,
     separator = " ",
     separator_highlight = {"NONE", colors.bg},
-    highlight = {colors.orange, colors.bg}
+    highlight = {colors.blue, colors.bg}
   }
 }
 
@@ -77,11 +78,33 @@ gls.left[3] = {
     condition = condition.check_git_workspace,
     separator = " ",
     separator_highlight = {"NONE", colors.bg},
-    highlight = {colors.grey, colors.bg}
+    highlight = {colors.white, colors.bg}
   }
 }
 
 gls.left[4] = {
+  Whitespace = {
+    provider = require("galaxyline.providers.whitespace").get_item,
+    separator = " ",
+    separator_highlight = {"NONE", colors.bg},
+  }
+}
+
+gls.left[5] = {
+  FileIcon = {
+    provider = "FileIcon",
+    highlight = {require("galaxyline.providers.fileinfo").get_file_icon_color, colors.bg}
+  }
+}
+
+gls.left[6] = {
+  FileName = {
+    provider = "FileName",
+    highlight = {colors.blue, colors.bg}
+  }
+}
+
+gls.left[7] = {
   DiffAdd = {
     provider = "DiffAdd",
     condition = condition.hide_in_width,
@@ -89,7 +112,7 @@ gls.left[4] = {
     highlight = {colors.green, colors.bg}
   }
 }
-gls.left[5] = {
+gls.left[8] = {
   DiffModified = {
     provider = "DiffModified",
     condition = condition.hide_in_width,
@@ -97,7 +120,7 @@ gls.left[5] = {
     highlight = {colors.blue, colors.bg}
   }
 }
-gls.left[6] = {
+gls.left[9] = {
   DiffRemove = {
     provider = "DiffRemove",
     condition = condition.hide_in_width,
@@ -147,7 +170,6 @@ gls.right[5] = {
       end
       return true
     end,
-    icon = "  ",
     highlight = {colors.grey, colors.bg}
   }
 }
@@ -183,16 +205,6 @@ gls.right[8] = {
 }
 
 gls.right[9] = {
-  BufferType = {
-    provider = "FileTypeName",
-    condition = condition.hide_in_width,
-    separator = " ",
-    separator_highlight = {"NONE", colors.bg},
-    highlight = {colors.grey, colors.bg}
-  }
-}
-
-gls.right[10] = {
   FileEncode = {
     provider = "FileEncode",
     condition = condition.hide_in_width,
@@ -230,15 +242,6 @@ gls.right[12] = {
 }
 
 gls.short_line_left[1] = {
-  BufferType = {
-    provider = "FileTypeName",
-    separator = " ",
-    separator_highlight = {"NONE", colors.bg},
-    highlight = {colors.grey, colors.bg}
-  }
-}
-
-gls.short_line_left[2] = {
   SFileName = {
     provider = "SFileName",
     condition = condition.buffer_not_empty,
