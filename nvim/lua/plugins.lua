@@ -21,6 +21,15 @@ return require("packer").startup(function(use)
   use 'hrsh7th/vim-vsnip'
 
   use 'Mofiqul/vscode.nvim'
+
+  use({
+    "NTBBloodbath/galaxyline.nvim",
+    config = function()
+      require("lua/statusbar")
+    end,
+    requires = { "kyazdani42/nvim-web-devicons", opt = true }
+  })
+
   if packer_bootstrap then
     require('packer').sync()
   end
