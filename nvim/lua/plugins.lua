@@ -36,6 +36,13 @@ return require("packer").startup(function(use)
   }
 
   use 'airblade/vim-gitgutter'
+  use 'bkad/CamelCaseMotion'
+  use 'tpope/vim-surround'
+  use 'tpope/vim-unimpaired'
+  use 'tpope/vim-eunuch'
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-commentary'
+  use 'mattn/emmet-vim'
 
   if packer_bootstrap then
     require('packer').sync()
