@@ -3,12 +3,9 @@ vim.cmd("source base.vim")
 require("./lua/plugins")
 require("./lua/treesitter")
 require("./lua/lsp")
+require("./lua/theme")
 
 vim.cmd([[
-" colorscheme
-" let g:vscode_style = "dark"
-" colorscheme vscode
-
 " Telescope bindings
 nnoremap <Leader>pp <cmd>lua require'telescope.builtin'.builtin{}<CR>
 
