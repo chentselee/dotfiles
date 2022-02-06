@@ -25,7 +25,7 @@ return require("packer").startup(function(use)
   use({
     "NTBBloodbath/galaxyline.nvim",
     config = function()
-      require("lua/statusbar")
+      require("statusbar")
     end,
     requires = { "kyazdani42/nvim-web-devicons", opt = true }
   })
