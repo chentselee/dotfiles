@@ -135,6 +135,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# enabled if neovim was installed through flatpak
+if command_exists flatpak && (flatpak list | awk '{print $1}' | grep -i neovim); then
+  alias nvim="flatpak run io.neovim.nvim"
+fi
+
 # hide hostname
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
