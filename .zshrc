@@ -141,7 +141,7 @@ export NVM_DIR="$HOME/.nvm"
 # enabled if neovim was installed through flatpak
 if command_exists flatpak; then
   if [[ $(flatpak list | awk '{print $1}' | grep -i neovim) =~ "Neovim" ]]; then
-    alias nvim="flatpak run io.neovim.nvim"
+    alias nvim="FLATPAK_ENABLE_SDK_EXT=node16,golang flatpak run io.neovim.nvim"
   fi
 fi
 
