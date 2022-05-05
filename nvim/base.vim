@@ -1,5 +1,4 @@
 " base
-language en_US
 set nocompatible
 set autoread " reload files when changed on the disk
 set noswapfile
