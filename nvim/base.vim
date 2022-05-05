@@ -110,3 +110,5 @@ function! ToggleLocationList()
   endif
 endfunction
 nnoremap <silent> <Leader>clt :call ToggleLocationList()<CR>
+" netrw
+nnoremap <C-E> :Exp<CR>
