@@ -111,12 +111,12 @@ function! ToggleLocationList()
 endfunction
 nnoremap <silent> <Leader>clt :call ToggleLocationList()<CR>
 " netrw
-nnoremap <Leader>e :Lex<CR>
+nnoremap <silent> <Leader>d :Lex<CR>
 let g:netrw_winsize = 20
 let g:netrw_banner = 0
 let g:netrw_keepdir = 0
 function! NetrwMapping()
-  nmap <buffer> L <CR>:Lex<CR>
+  nmap <buffer><silent> L <CR>:Lex<CR>
 endfunction
 augroup netrw_mapping
   autocmd!
