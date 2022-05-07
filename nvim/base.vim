@@ -87,12 +87,6 @@ tnoremap <Leader>` <C-\><C-N>:b#<CR>
 nnoremap <Leader>a ggVG 
 " search and replace under cursor
 nnoremap <C-S> :%s/<C-R><C-W>/<C-R><C-W>/g<Left><Left><Left>
-" navigate quickfix list
-nnoremap <Leader>cqn :cnext<CR>
-nnoremap <Leader>cqp :cprev<CR>
-" navigate location list
-nnoremap <Leader>cln :lnext<CR>
-nnoremap <Leader>clp :lprev<CR>
 " toggle quickfix and location list
 function! ToggleQuickFix()
   if empty(filter(getwininfo(), 'v:val.quickfix'))
@@ -101,7 +95,7 @@ function! ToggleQuickFix()
     cclose
   endif
 endfunction
-nnoremap <silent> <Leader>cqt :call ToggleQuickFix()<CR>
+nnoremap <silent> <C-Q> :call ToggleQuickFix()<CR>
 function! ToggleLocationList()
   if empty(filter(getwininfo(), 'v:val.loclist'))
     lopen
