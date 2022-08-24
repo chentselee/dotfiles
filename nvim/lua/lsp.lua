@@ -1,19 +1,12 @@
-local lsp_installer = require("nvim-lsp-installer")
-lsp_installer.on_server_ready(function(server)
-  local opts = {}
-  if server.name == "sumneko_lua" then
-    opts = {
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { 'vim' }
-          }
-        }
-      }
-    }
+require("nvim-lsp-installer").setup {}
+
+local lspconfig = require('lspconfig')
+lspconfig.tsserver.setup {
+  on_attach = function(client)
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
   end
-  server:setup(opts)
-end)
+}
 
 local keymap = vim.api.nvim_set_keymap
 local function nkeymap(key, map)
