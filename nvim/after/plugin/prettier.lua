@@ -14,7 +14,6 @@ prettier.setup {
     'typescript',
     'typescriptreact',
     'json',
-    'svelte',
     'vue'
   }
 }

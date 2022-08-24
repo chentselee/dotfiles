@@ -11,7 +11,8 @@ return require("packer").startup(function(use)
 
   use 'nvim-treesitter/nvim-treesitter'
 
-  use 'williamboman/nvim-lsp-installer'
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
   use 'neovim/nvim-lspconfig'
   use 'L3MON4D3/LuaSnip'
   use 'onsails/lspkind-nvim'
