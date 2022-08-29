@@ -119,6 +119,9 @@ fi
 if command_exists rg; then
   alias grep="rg"
 fi
+if command_exists starship; then
+  eval "$(starship init zsh)"
+fi
 
 # git locale
 alias git='LANG=en_US.UTF-8 git'
