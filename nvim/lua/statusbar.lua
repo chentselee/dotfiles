@@ -23,6 +23,9 @@ local condition = require("galaxyline.condition")
 local gls = gl.section
 gl.short_line_list = {"vista", "dbui"}
 
+local fileinfo = require('galaxyline.provider_fileinfo')
+local whitespace = require('galaxyline.provider_whitespace')
+
 gls.left[1] = {
   ViMode = {
     provider = function()
@@ -84,7 +87,7 @@ gls.left[3] = {
 
 gls.left[4] = {
   Whitespace = {
-    provider = require("galaxyline.providers.whitespace").get_item,
+    provider = whitespace.get_item,
     separator = " ",
     separator_highlight = {"NONE", colors.bg},
   }
@@ -93,7 +96,7 @@ gls.left[4] = {
 gls.left[5] = {
   FileIcon = {
     provider = "FileIcon",
-    highlight = {require("galaxyline.providers.fileinfo").get_file_icon_color, colors.bg}
+    highlight = {fileinfo.get_file_icon_color, colors.bg}
   }
 }
 

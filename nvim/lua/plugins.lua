@@ -29,7 +29,8 @@ return require("packer").startup(function(use)
   use 'Mofiqul/vscode.nvim'
 
   use({
-    "NTBBloodbath/galaxyline.nvim",
+    "glepnir/galaxyline.nvim",
+    branch = 'main',
     config = function()
       require("statusbar")
     end,
