@@ -158,3 +158,14 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
+
+# bun completions
+[ -s "/home/chentse/.bun/_bun" ] && source "/home/chentse/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# deno
+export DENO_INSTALL="/home/chentse/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
