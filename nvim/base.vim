@@ -81,6 +81,8 @@ nnoremap <Leader>w <C-W>
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap H ^
 nnoremap L $
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
 tnoremap <Leader><Esc> <C-\><C-N>
 tnoremap <Leader>` <C-\><C-N>:b#<CR>
 " select all
