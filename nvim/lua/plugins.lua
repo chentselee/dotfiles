@@ -50,7 +50,7 @@ return require("packer").startup(function(use)
   }
   use {
     'jose-elias-alvarez/null-ls.nvim',
-    branch = 'main'
+    branch = '0.7-compat'
   }
   use {
     'MunifTanjim/prettier.nvim',
