@@ -74,7 +74,6 @@ set t_Co=256
 let g:mapleader=" "
 
 " map
-nnoremap <Leader>b :b#<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>s :w<CR>
 nnoremap <Leader>w <C-W>
