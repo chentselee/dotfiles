@@ -1,1 +1,7 @@
-vim.g.camelcasemotion_key = '<leader>'
+vim.keymap.set('n', '\\w', '<Plug>CamelCaseMotion_w', { noremap = true, silent = true })
+vim.keymap.set('n', '\\b', '<Plug>CamelCaseMotion_b', { noremap = true, silent = true })
+vim.keymap.set('n', '\\e', '<Plug>CamelCaseMotion_e', { noremap = true, silent = true })
+vim.keymap.set('n', '\\ge', '<Plug>CamelCaseMotion_ge', { noremap = true, silent = true })
+vim.keymap.set('v', '\\iw', '<Plug>CamelCaseMotion_iw', { noremap = true, silent = true })
+vim.keymap.set('v', '\\ib', '<Plug>CamelCaseMotion_ib', { noremap = true, silent = true })
+vim.keymap.set('v', '\\ie', '<Plug>CamelCaseMotion_ie', { noremap = true, silent = true })
