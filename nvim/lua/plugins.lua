@@ -68,14 +68,10 @@ return require("packer").startup(function(use)
     commit = "c5125820a0915ef50f03fae10423c43dc49c66b1"
   }
 
-  use({
-    "glepnir/galaxyline.nvim",
-    commit = 'be96f3d',
-    config = function()
-      require("statusbar")
-    end,
-    requires = { "kyazdani42/nvim-web-devicons", opt = true }
-  })
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons' }
+  }
 
   use {
     'nvim-telescope/telescope.nvim',
