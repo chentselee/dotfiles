@@ -15,63 +15,62 @@ return require("packer").startup(function(use)
   }
   use {
     'williamboman/mason.nvim',
-    branch = 'main'
+    commit = '5f82a4e'
   }
   use {
     'williamboman/mason-lspconfig.nvim',
-    branch = 'main'
+    commit = '31d8ed0'
   }
   use {
     'neovim/nvim-lspconfig',
-    branch = 'master'
+    commit = '42ca8ce'
   }
   use {
     'L3MON4D3/LuaSnip',
-    branch = 'master'
+    commit = '5570fd7'
   }
   use {
     'onsails/lspkind-nvim',
-    branch = 'master'
+    commit = 'c68b3a0'
   }
   use {
     'hrsh7th/cmp-buffer',
-    branch = 'main'
+    commit = '3022dbc'
   }
   use {
     'hrsh7th/cmp-nvim-lsp',
-    branch = 'main'
+    commit = '5922477'
   }
   use {
     'hrsh7th/nvim-cmp',
-    branch = 'main'
+    commit = 'e55033f'
   }
   use {
     'glepnir/lspsaga.nvim',
-    branch = 'main'
+    commit = 'b7b4777'
   }
   use {
     'jose-elias-alvarez/null-ls.nvim',
-    branch = 'main'
+    commit = 'b26851b'
   }
 
   use {
     'windwp/nvim-autopairs',
-    branch = 'master'
+    commit = '03580d7'
   }
   use {
     'windwp/nvim-ts-autotag',
-    branch = 'main'
+    commit = 'fdefe46'
   }
 
   use {
     'Mofiqul/vscode.nvim',
-    -- branch = 'main'
     commit = "c5125820a0915ef50f03fae10423c43dc49c66b1"
   }
 
   use({
     "glepnir/galaxyline.nvim",
-    branch = 'main',
+    commit = 'be96f3d',
     config = function()
       require("statusbar")
     end,
@@ -80,17 +79,49 @@ return require("packer").startup(function(use)
 
   use {
     'nvim-telescope/telescope.nvim',
+    commit = 'e960efa',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
-  use 'airblade/vim-gitgutter'
-  use 'bkad/CamelCaseMotion'
-  use 'tpope/vim-surround'
-  use 'tpope/vim-unimpaired'
-  use 'tpope/vim-eunuch'
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-commentary'
-  use 'mattn/emmet-vim'
+  use {
+    'airblade/vim-gitgutter',
+    commit = '00df108'
+  }
+
+  use {
+    'bkad/CamelCaseMotion',
+    commit = 'de439d7'
+  }
+
+  use {
+    'tpope/vim-surround',
+    commit = '3d188ed'
+  }
+
+  use {
+    'tpope/vim-unimpaired',
+    commit = '6d44a6d'
+  }
+
+  use {
+    'tpope/vim-eunuch',
+    commit = '291ef1f'
+  }
+
+  use {
+    'tpope/vim-fugitive',
+    commit = '5b0b138'
+  }
+
+  use {
+    'tpope/vim-commentary',
+    commit = 'e87cd90'
+  }
+
+  use {
+    'mattn/emmet-vim',
+    commit = 'def5d57'
+  }
 
   if packer_bootstrap then
     require('packer').sync()
