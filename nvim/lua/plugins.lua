@@ -6,7 +6,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
     install_path })
 end
 
-return require("packer").startup(function(use)
+return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -65,11 +65,12 @@ return require("packer").startup(function(use)
 
   use {
     'Mofiqul/vscode.nvim',
-    commit = "c5125820a0915ef50f03fae10423c43dc49c66b1"
+    commit = 'c5125820a0915ef50f03fae10423c43dc49c66b1'
   }
 
   use {
     'nvim-lualine/lualine.nvim',
+    commit = 'fffbcb8',
     requires = { 'nvim-tree/nvim-web-devicons' }
   }
 
