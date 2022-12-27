@@ -52,10 +52,6 @@ return require("packer").startup(function(use)
     'jose-elias-alvarez/null-ls.nvim',
     branch = 'main'
   }
-  use {
-    'MunifTanjim/prettier.nvim',
-    branch = 'main'
-  }
 
   use {
     'windwp/nvim-autopairs',

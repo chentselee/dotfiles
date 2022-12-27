@@ -21,7 +21,7 @@ end
 
 -- auto format
 vim.cmd([[
-autocmd BufWritePre * :lua vim.lsp.buf.formatting_seq_sync()
+autocmd BufWritePre * :lua vim.lsp.buf.format()
 ]])
 
 -- mappings
