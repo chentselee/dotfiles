@@ -10,7 +10,8 @@ return require("packer").startup(function(use)
   use 'wbthomason/packer.nvim'
   use {
     'nvim-treesitter/nvim-treesitter',
-    branch = 'master'
+    -- Fix html highlighting. See 'https://github.com/folke/tokyonight.nvim/issues/250#issuecomment-1324082607'
+    commit = '9bfaf62e42bdcd042df1230e9188487e62a112c0'
   }
   use {
     'williamboman/mason.nvim',
