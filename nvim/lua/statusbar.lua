@@ -21,7 +21,7 @@ local colors = {
 }
 local condition = require("galaxyline.condition")
 local gls = gl.section
-gl.short_line_list = {"vista", "dbui"}
+gl.short_line_list = { "vista", "dbui" }
 
 local fileinfo = require('galaxyline.provider_fileinfo')
 local whitespace = require('galaxyline.provider_whitespace')
@@ -52,12 +52,12 @@ gls.left[1] = {
       }
       vim.api.nvim_command(
         mode_color[vim.fn.mode()] and
-          "hi GalaxyViMode guifg=" .. mode_color[vim.fn.mode()] or
-          ""
+        "hi GalaxyViMode guifg=" .. mode_color[vim.fn.mode()] or
+        ""
       )
       return "▊ "
     end,
-    highlight = {colors.red, colors.bg}
+    highlight = { colors.red, colors.bg }
   }
 }
 print(vim.fn.getbufvar(0, "ts"))
@@ -70,8 +70,8 @@ gls.left[2] = {
     end,
     condition = condition.check_git_workspace,
     separator = " ",
-    separator_highlight = {"NONE", colors.bg},
-    highlight = {colors.blue, colors.bg}
+    separator_highlight = { "NONE", colors.bg },
+    highlight = { colors.blue, colors.bg }
   }
 }
 
@@ -80,8 +80,8 @@ gls.left[3] = {
     provider = "GitBranch",
     condition = condition.check_git_workspace,
     separator = " ",
-    separator_highlight = {"NONE", colors.bg},
-    highlight = {colors.white, colors.bg}
+    separator_highlight = { "NONE", colors.bg },
+    highlight = { colors.white, colors.bg }
   }
 }
 
@@ -89,21 +89,21 @@ gls.left[4] = {
   Whitespace = {
     provider = whitespace.get_item,
     separator = " ",
-    separator_highlight = {"NONE", colors.bg},
+    separator_highlight = { "NONE", colors.bg },
   }
 }
 
 gls.left[5] = {
   FileIcon = {
     provider = "FileIcon",
-    highlight = {fileinfo.get_file_icon_color, colors.bg}
+    highlight = { fileinfo.get_file_icon_color, colors.bg }
   }
 }
 
 gls.left[6] = {
   FileName = {
     provider = "FileName",
-    highlight = {colors.blue, colors.bg}
+    highlight = { colors.blue, colors.bg }
   }
 }
 
@@ -112,7 +112,7 @@ gls.left[7] = {
     provider = "DiffAdd",
     condition = condition.hide_in_width,
     icon = "  ",
-    highlight = {colors.green, colors.bg}
+    highlight = { colors.green, colors.bg }
   }
 }
 gls.left[8] = {
@@ -120,7 +120,7 @@ gls.left[8] = {
     provider = "DiffModified",
     condition = condition.hide_in_width,
     icon = " 柳",
-    highlight = {colors.blue, colors.bg}
+    highlight = { colors.blue, colors.bg }
   }
 }
 gls.left[9] = {
@@ -128,7 +128,7 @@ gls.left[9] = {
     provider = "DiffRemove",
     condition = condition.hide_in_width,
     icon = "  ",
-    highlight = {colors.red, colors.bg}
+    highlight = { colors.red, colors.bg }
   }
 }
 
@@ -136,14 +136,14 @@ gls.right[1] = {
   DiagnosticError = {
     provider = "DiagnosticError",
     icon = "  ",
-    highlight = {colors.error_red, colors.bg}
+    highlight = { colors.error_red, colors.bg }
   }
 }
 gls.right[2] = {
   DiagnosticWarn = {
     provider = "DiagnosticWarn",
     icon = "  ",
-    highlight = {colors.orange, colors.bg}
+    highlight = { colors.orange, colors.bg }
   }
 }
 
@@ -151,7 +151,7 @@ gls.right[3] = {
   DiagnosticHint = {
     provider = "DiagnosticHint",
     icon = "  ",
-    highlight = {colors.vivid_blue, colors.bg}
+    highlight = { colors.vivid_blue, colors.bg }
   }
 }
 
@@ -159,7 +159,7 @@ gls.right[4] = {
   DiagnosticInfo = {
     provider = "DiagnosticInfo",
     icon = "  ",
-    highlight = {colors.info_yellow, colors.bg}
+    highlight = { colors.info_yellow, colors.bg }
   }
 }
 
@@ -167,13 +167,13 @@ gls.right[5] = {
   ShowLspClient = {
     provider = "GetLspClient",
     condition = function()
-      local tbl = {["dashboard"] = true, [" "] = true}
+      local tbl = { ["dashboard"] = true, [" "] = true }
       if tbl[vim.bo.filetype] then
         return false
       end
       return true
     end,
-    highlight = {colors.grey, colors.bg}
+    highlight = { colors.grey, colors.bg }
   }
 }
 
@@ -181,8 +181,8 @@ gls.right[6] = {
   LineInfo = {
     provider = "LineColumn",
     separator = "  ",
-    separator_highlight = {"NONE", colors.bg},
-    highlight = {colors.grey, colors.bg}
+    separator_highlight = { "NONE", colors.bg },
+    highlight = { colors.grey, colors.bg }
   }
 }
 
@@ -190,8 +190,8 @@ gls.right[7] = {
   PerCent = {
     provider = "LinePercent",
     separator = " ",
-    separator_highlight = {"NONE", colors.bg},
-    highlight = {colors.grey, colors.bg}
+    separator_highlight = { "NONE", colors.bg },
+    highlight = { colors.grey, colors.bg }
   }
 }
 
@@ -202,8 +202,8 @@ gls.right[8] = {
     end,
     condition = condition.hide_in_width,
     separator = " ",
-    separator_highlight = {"NONE", colors.bg},
-    highlight = {colors.grey, colors.bg}
+    separator_highlight = { "NONE", colors.bg },
+    highlight = { colors.grey, colors.bg }
   }
 }
 
@@ -212,8 +212,8 @@ gls.right[9] = {
     provider = "FileEncode",
     condition = condition.hide_in_width,
     separator = " ",
-    separator_highlight = {"NONE", colors.bg},
-    highlight = {colors.grey, colors.bg}
+    separator_highlight = { "NONE", colors.bg },
+    highlight = { colors.grey, colors.bg }
   }
 }
 
@@ -239,8 +239,8 @@ gls.right[12] = {
       return " "
     end,
     separator = " ",
-    separator_highlight = {"NONE", colors.bg},
-    highlight = {colors.orange, colors.bg}
+    separator_highlight = { "NONE", colors.bg },
+    highlight = { colors.orange, colors.bg }
   }
 }
 
@@ -248,11 +248,11 @@ gls.short_line_left[1] = {
   SFileName = {
     provider = "SFileName",
     condition = condition.buffer_not_empty,
-    highlight = {colors.grey, colors.bg}
+    highlight = { colors.grey, colors.bg }
   }
 }
 
 gls.short_line_right[1] = {
-  BufferIcon = {provider = "BufferIcon", highlight = {colors.grey, colors.bg}}
+  BufferIcon = { provider = "BufferIcon", highlight = { colors.grey, colors.bg } }
 }
 gls.short_line_right[2] = NeomuxProvider
