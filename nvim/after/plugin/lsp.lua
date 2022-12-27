@@ -1,16 +1,16 @@
 require("mason").setup()
 require("mason-lspconfig").setup()
 require("mason-lspconfig").setup_handlers({
- function (server_name)
-   require("lspconfig")[server_name].setup {}
- end
+  function(server_name)
+    require("lspconfig")[server_name].setup {}
+  end
 })
 
 local lspconfig = require('lspconfig')
 lspconfig.tsserver.setup {
   on_attach = function(client)
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    client.server_capabilities.document_formatting = false
+    client.server_capabilities.document_range_formatting = false
   end
 }
 
