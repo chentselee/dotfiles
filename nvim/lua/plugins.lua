@@ -120,6 +120,11 @@ return require('packer').startup(function(use)
     commit = 'def5d57'
   }
 
+  use {
+    'theprimeagen/harpoon',
+    commit = '21d0d1b'
+  }
+
   if packer_bootstrap then
     require('packer').sync()
   end
