@@ -7,7 +7,10 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require("packer").startup(function(use)
-  use 'wbthomason/packer.nvim'
+  use {
+    'wbthomason/packer.nvim',
+    commit = 'dac4088'
+  }
   use {
     'nvim-treesitter/nvim-treesitter',
     -- Fix html highlighting. See 'https://github.com/folke/tokyonight.nvim/issues/250#issuecomment-1324082607'
@@ -65,7 +68,7 @@ return require("packer").startup(function(use)
 
   use {
     'Mofiqul/vscode.nvim',
-    commit = "c5125820a0915ef50f03fae10423c43dc49c66b1"
+    commit = 'c5125820a0915ef50f03fae10423c43dc49c66b1'
   }
 
   use({
@@ -80,7 +83,7 @@ return require("packer").startup(function(use)
   use {
     'nvim-telescope/telescope.nvim',
     commit = 'e960efa',
-    requires = { { 'nvim-lua/plenary.nvim' } }
+    requires = { { 'nvim-lua/plenary.nvim', commit = '4b7e520' } }
   }
 
   use {
