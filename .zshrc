@@ -107,7 +107,6 @@ alias y="yarn"
 alias ys="yarn start"
 alias yt="yarn test"
 alias p="pnpm"
-alias ps="pnpm start"
 alias pt="pnpm test"
 if command_exists bat; then
   alias cat="bat -p"
