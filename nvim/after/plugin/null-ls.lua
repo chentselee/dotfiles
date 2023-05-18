@@ -6,10 +6,6 @@ local formatting = null_ls.builtins.formatting
 
 null_ls.setup {
   sources = {
-    null_ls.builtins.formatting.prettierd,
-    null_ls.builtins.code_actions.eslint_d
-  }
-  sources = {
     formatting.eslint_d,
     formatting.prettierd.with({
       filetypes = {
