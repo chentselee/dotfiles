@@ -54,7 +54,7 @@ return require("packer").startup(function(use)
   }
   use {
     'jose-elias-alvarez/null-ls.nvim',
-    commit = 'b26851b'
+    commit = '77e53bc3bac34cc273be8ed9eb9ab78bcf67fa48'
   }
 
   use {
