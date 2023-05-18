@@ -129,11 +129,15 @@ alias git='LANG=en_US.UTF-8 git'
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # pnpm
-export PNPM_HOME="/Users/chengzeli/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
 # go
 export PATH=$PATH:/usr/local/go/bin
+
+# GOPATH
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
@@ -157,7 +161,6 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-
 # bun completions
 [ -s "/home/chentse/.bun/_bun" ] && source "/home/chentse/.bun/_bun"
 
@@ -168,3 +171,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # deno
 export DENO_INSTALL="/home/chentse/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+
