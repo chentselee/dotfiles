@@ -6,14 +6,6 @@ require("mason-lspconfig").setup_handlers({
   end
 })
 
-local lspconfig = require('lspconfig')
-lspconfig.tsserver.setup {
-  on_attach = function(client)
-    client.server_capabilities.document_formatting = false
-    client.server_capabilities.document_range_formatting = false
-  end
-}
-
 local keymap = vim.api.nvim_set_keymap
 local function nkeymap(key, map)
   keymap('n', key, map, { noremap = true })
@@ -21,7 +13,7 @@ end
 
 -- auto format
 vim.cmd([[
-autocmd BufWritePre * :lua vim.lsp.buf.format()
+autocmd BufWritePre * :lua vim.lsp.buf.format { filter = function(client) return client.name ~= "tsserver" end }
 ]])
 
 -- mappings
@@ -33,7 +25,7 @@ nkeymap('gt', ':lua vim.lsp.buf.type_definition()<cr>')
 -- nkeymap('K', ':lua vim.lsp.buf.hover()<cr>')
 -- nkeymap('<leader>ca', ':lua vim.lsp.buf.code_action()<cr>')
 -- nkeymap('<leader>rn', ':lua vim.lsp.buf.rename()<cr>')
-nkeymap('<leader>mf', ':lua vim.lsp.buf.formatting()<cr>')
+nkeymap('<leader>mf', ':lua vim.lsp.buf.format { filter = function(client) return client.name ~= "tsserver" end }<cr>')
 nkeymap('<leader>Wa', ':lua vim.lsp.buf.add_workspace_folder()<cr>')
 nkeymap('<leader>Wr', ':lua vim.lsp.buf.remove_workspace_folder()<cr>')
 nkeymap('<leader>Wl', ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>')
