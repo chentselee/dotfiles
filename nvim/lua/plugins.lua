@@ -77,7 +77,7 @@ return require("packer").startup(function(use)
     config = function()
       require("statusbar")
     end,
-    requires = { "kyazdani42/nvim-web-devicons", opt = true }
+    requires = { "nvim-tree/nvim-web-devicons", opt = true }
   })
 
   use {
