@@ -6,11 +6,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
     install_path })
 end
 
-return require("packer").startup(function(use)
-  use {
-    'wbthomason/packer.nvim',
-    commit = 'dac4088'
-  }
+return require('packer').startup(function(use)
+  use 'wbthomason/packer.nvim'
   use {
     'nvim-treesitter/nvim-treesitter',
     -- Fix html highlighting. See 'https://github.com/folke/tokyonight.nvim/issues/250#issuecomment-1324082607'
@@ -71,14 +68,11 @@ return require("packer").startup(function(use)
     commit = 'c5125820a0915ef50f03fae10423c43dc49c66b1'
   }
 
-  use({
-    "glepnir/galaxyline.nvim",
-    commit = 'be96f3d',
-    config = function()
-      require("statusbar")
-    end,
-    requires = { "nvim-tree/nvim-web-devicons", opt = true }
-  })
+  use {
+    'nvim-lualine/lualine.nvim',
+    commit = 'fffbcb8',
+    requires = { 'nvim-tree/nvim-web-devicons' }
+  }
 
   use {
     'nvim-telescope/telescope.nvim',
@@ -124,6 +118,11 @@ return require("packer").startup(function(use)
   use {
     'mattn/emmet-vim',
     commit = 'def5d57'
+  }
+
+  use {
+    'theprimeagen/harpoon',
+    commit = '21d0d1b'
   }
 
   if packer_bootstrap then
