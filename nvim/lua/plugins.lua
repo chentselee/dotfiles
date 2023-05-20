@@ -125,6 +125,11 @@ return require('packer').startup(function(use)
     commit = '21d0d1b'
   }
 
+  use {
+    'folke/zen-mode.nvim',
+    commit = '6e6c963d70a8e47854fa656987666bfb863f9c4e'
+  }
+
   if packer_bootstrap then
     require('packer').sync()
   end
