@@ -7,6 +7,7 @@ set novisualbell
 set noerrorbells
 set updatetime=50 " for GitGutter
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
+language en_US
 
 " undo dir
 " set undodir=~/.vim/undodir
