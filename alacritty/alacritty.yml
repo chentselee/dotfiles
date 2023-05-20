@@ -747,6 +747,14 @@ colors:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
+#
+# Make `Option` key behave as `Alt` (macOS only):
+#   - OnlyLeft
+#   - OnlyRight
+#   - Both
+#   - None (default)
+option_as_alt: OnlyLeft
+
 key_bindings:
   - { key: C, mods: Control|Shift, action: SpawnNewInstance }
   #- { key: Paste,                                       action: Paste          }
