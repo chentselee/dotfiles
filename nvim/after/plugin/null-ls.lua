@@ -18,7 +18,8 @@ null_ls.setup {
         'typescript',
         'typescriptreact',
         'json',
-        'vue'
+        'vue',
+        'svelte'
       }
     }),
   },
