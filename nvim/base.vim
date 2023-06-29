@@ -109,13 +109,14 @@ nnoremap <silent> <Leader>clt :call ToggleLocationList()<CR>
 
 " netrw
 let g:netrw_banner = 0
-let g:netrw_keepdir = 0
+" Setting netrw_keepdir to 0 will conflict with harpoon
+" let g:netrw_keepdir = 0
 " toggle netrw
 function! NetrwMapping()
   if &ft ==# "netrw"
-    normal `E
+    normal `Z
   else
-    mark E
+    mark Z
     silent Explore
   endif
 endfunction
