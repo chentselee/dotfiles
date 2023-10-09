@@ -15,7 +15,7 @@ return require('packer').startup(function(use)
   }
   use {
     'williamboman/mason.nvim',
-    commit = '5f82a4e'
+    tag = 'v1.8.0'
   }
   use {
     'williamboman/mason-lspconfig.nvim',
@@ -23,7 +23,7 @@ return require('packer').startup(function(use)
   }
   use {
     'neovim/nvim-lspconfig',
-    commit = '42ca8ce'
+    tag = 'v0.1.6'
   }
   use {
     'L3MON4D3/LuaSnip',
