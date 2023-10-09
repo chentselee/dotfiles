@@ -50,8 +50,9 @@ return require('packer').startup(function(use)
     commit = 'b7b4777'
   }
   use {
-    'jose-elias-alvarez/null-ls.nvim',
-    commit = '77e53bc3bac34cc273be8ed9eb9ab78bcf67fa48'
+    'creativenull/efmls-configs-nvim',
+    tag = 'v1.1.1',
+    requires = { 'neovim/nvim-lspconfig' },
   }
 
   use {

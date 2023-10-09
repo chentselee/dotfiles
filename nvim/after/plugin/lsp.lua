@@ -1,22 +1,24 @@
 require("mason").setup()
 require("mason-lspconfig").setup()
+-- default lspconfig
 require("mason-lspconfig").setup_handlers({
   function(server_name)
     require("lspconfig")[server_name].setup {}
   end
 })
+-- custom lsp configs
+require("lsp.efm")
 
+-- auto format
+vim.cmd([[
+autocmd BufWritePre * :lua vim.lsp.buf.format { filter = function(client) return client.name ~= "tsserver" and client.name ~= "svelte" end }
+]])
+
+-- mappings
 local keymap = vim.api.nvim_set_keymap
 local function nkeymap(key, map)
   keymap('n', key, map, { noremap = true })
 end
-
--- auto format
-vim.cmd([[
-autocmd BufWritePre * :lua vim.lsp.buf.format { filter = function(client) return client.name ~= "tsserver" end }
-]])
-
--- mappings
 -- nkeymap('gd', ':lua vim.lsp.buf.definition()<cr>')
 nkeymap('gD', ':lua vim.lsp.buf.declaration()<cr>')
 nkeymap('gi', ':lua vim.lsp.buf.implementation()<cr>')
