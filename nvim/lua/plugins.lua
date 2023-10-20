@@ -131,6 +131,10 @@ return require('packer').startup(function(use)
     commit = '6e6c963d70a8e47854fa656987666bfb863f9c4e'
   }
 
+  use { "akinsho/toggleterm.nvim",
+    tag = 'v2.8.0'
+  }
+
   if packer_bootstrap then
     require('packer').sync()
   end
