@@ -19,11 +19,11 @@ return require('packer').startup(function(use)
   }
   use {
     'williamboman/mason-lspconfig.nvim',
-    commit = '31d8ed0'
+    tag = 'v1.19.0'
   }
   use {
     'neovim/nvim-lspconfig',
-    tag = 'v0.1.6'
+    commit = '36e394c'
   }
   use {
     'L3MON4D3/LuaSnip',
@@ -131,8 +131,13 @@ return require('packer').startup(function(use)
     commit = '6e6c963d70a8e47854fa656987666bfb863f9c4e'
   }
 
-  use { "akinsho/toggleterm.nvim",
+  use {
+    'akinsho/toggleterm.nvim',
     tag = 'v2.8.0'
+  }
+
+  use {
+    'vrischmann/tree-sitter-templ',
   }
 
   if packer_bootstrap then
