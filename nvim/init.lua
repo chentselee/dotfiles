@@ -62,8 +62,29 @@ vim.opt.guicursor = ''
 -- no swap
 vim.opt.swapfile = false
 
+-- highlight yanked text
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight yanked text',
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
+
 -- netrw
 vim.g.netrw_banner = 0
+-- toggle netrw
+vim.cmd([[
+function! NetrwMapping()
+  if &ft ==# "netrw"
+    normal `Z
+  else
+    mark Z
+    silent Explore
+  endif
+endfunction
+]])
+vim.keymap.set('n', '<leader>d', '<cmd>call NetrwMapping()<CR>')
 
 -- map
 vim.keymap.set('n', '<leader>q', '<cmd>q<CR>')
@@ -78,18 +99,6 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', '<leader>a', 'ggVG')
 -- search and replace under cursor
 vim.keymap.set('n', '<C-s>', ':%s/<C-r><C-w>/<C-r><C-w>/g<left><left><left>')
--- toggle netrw
-vim.cmd([[
-function! NetrwMapping()
-  if &ft ==# "netrw"
-    normal `Z
-  else
-    mark Z
-    silent Explore
-  endif
-endfunction
-]])
-vim.keymap.set('n', '<leader>d', '<cmd>call NetrwMapping()<CR>')
 vim.keymap.set('t', '<leader><esc>', '<C-\\><C-n>')
 
 require("plugins")
