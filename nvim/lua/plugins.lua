@@ -140,6 +140,10 @@ return require('packer').startup(function(use)
     'vrischmann/tree-sitter-templ',
   }
 
+  use {
+    'ggandor/leap.nvim',
+  }
+
   if packer_bootstrap then
     require('packer').sync()
   end
