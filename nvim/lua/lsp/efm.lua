@@ -1,16 +1,17 @@
-local eslint_d = require('efmls-configs.linters.eslint_d')
+local eslint_d_linter = require('efmls-configs.linters.eslint_d')
+local eslint_d_formatter = require('efmls-configs.formatters.eslint_d')
 local prettier_d = require('efmls-configs.formatters.prettier_d')
 local beautysh = require('efmls-configs.formatters.beautysh')
 
 local languages = {
   html = { prettier_d },
-  javascript = { eslint_d, prettier_d },
-  javascriptreact = { eslint_d, prettier_d },
-  typescript = { eslint_d, prettier_d },
-  typescriptreact = { eslint_d, prettier_d },
+  javascript = { eslint_d_linter, eslint_d_formatter, prettier_d },
+  javascriptreact = { eslint_d_linter, eslint_d_formatter, prettier_d },
+  typescript = { eslint_d_linter, eslint_d_formatter, prettier_d },
+  typescriptreact = { eslint_d_linter, eslint_d_formatter, prettier_d },
   svelte = { prettier_d },
   template = { prettier_d },
-  astro = { eslint_d, prettier_d },
+  astro = { eslint_d_linter, eslint_d_formatter, prettier_d },
   sh = { beautysh },
 }
 
