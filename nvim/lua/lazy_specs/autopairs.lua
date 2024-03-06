@@ -1,9 +1,9 @@
 return {
   {
     'windwp/nvim-autopairs',
-    commit = '03580d7',
+    event = "InsertEnter",
     opts = {
-      disable_filetype = { 'TelescopePrompt', 'vim' }
+      disable_filetype = { 'TelescopePrompt', 'spectre_panel', 'vim' }
     },
   }
 }
