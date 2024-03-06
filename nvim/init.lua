@@ -101,4 +101,4 @@ vim.keymap.set('n', '<leader>a', 'ggVG')
 vim.keymap.set('n', '<C-s>', ':%s/<C-r><C-w>/<C-r><C-w>/g<left><left><left>')
 vim.keymap.set('t', '<leader><esc>', '<C-\\><C-n>')
 
-require("plugins")
+require("plugin")
