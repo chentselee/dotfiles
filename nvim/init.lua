@@ -95,7 +95,6 @@ vim.keymap.set('n', 'H', '^')
 vim.keymap.set('n', 'L', '$')
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
-vim.keymap.set('n', '<C-j>', vim.diagnostic.goto_next)
 -- select all
 vim.keymap.set('n', '<leader>a', 'ggVG')
 -- search and replace under cursor

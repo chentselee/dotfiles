@@ -5,6 +5,10 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
+      {
+        'nvimdev/lspsaga.nvim',
+        commit = 'b7b4777'
+      },
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -20,8 +24,10 @@ return {
           nmap('gS', require('telescope.builtin').lsp_document_symbols)
           nmap('gS', require('telescope.builtin').lsp_document_symbols)
           nmap('<leader>rn', vim.lsp.buf.rename)
-          nmap('<leader>ca', vim.lsp.buf.code_action)
-          nmap('K', vim.lsp.buf.hover)
+          nmap('<leader>ca', '<cmd>Lspsaga code_action<CR>')
+          nmap('K', '<cmd>Lspsaga hover_doc<CR>')
+          nmap('<C-j>', '<cmd>Lspsaga diagnostic_jump_next<CR>')
+          nmap('<C-k>', '<cmd>Lspsaga diagnostic_jump_prev<CR>')
           nmap('gD', vim.lsp.buf.declaration)
         end
       })
