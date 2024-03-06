@@ -1,7 +1,6 @@
 return {
   {
     'bkad/CamelCaseMotion',
-    commit = 'de439d7',
     config = function()
       vim.keymap.set('n', '\\w', '<Plug>CamelCaseMotion_w', { noremap = true, silent = true })
       vim.keymap.set('n', 'c\\w', 'c<Plug>CamelCaseMotion_w', { noremap = true, silent = true })
