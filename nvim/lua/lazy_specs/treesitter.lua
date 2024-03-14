@@ -1,11 +1,6 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    -- Fix html highlighting. See 'https://github.com/folke/tokyonight.nvim/issues/250#issuecomment-1324082607'
-    commit = '9bfaf62e42bdcd042df1230e9188487e62a112c0',
-    dependencies = {
-      'vrischmann/tree-sitter-templ',
-    },
     build = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup {
