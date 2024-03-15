@@ -111,9 +111,9 @@ alias pt="pnpm test"
 if command_exists bat; then
   alias cat="bat -p"
 fi
-if command_exists exa; then
-  alias ls="exa -l"
-  alias la="exa -la"
+if command_exists eza; then
+  alias ls="eza -l"
+  alias la="eza -la"
 fi
 if command_exists rg; then
   alias grep="rg"
