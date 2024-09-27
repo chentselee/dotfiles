@@ -756,7 +756,7 @@ colors:
 option_as_alt: OnlyLeft
 
 key_bindings:
-  - { key: C, mods: Control|Shift, action: SpawnNewInstance }
+  #- { key: C, mods: Control|Shift, action: SpawnNewInstance }
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
