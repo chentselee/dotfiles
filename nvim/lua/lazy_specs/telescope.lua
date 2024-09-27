@@ -1,11 +1,10 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    commit = 'e960efa',
+    tag = '0.1.8',
     dependencies = {
       {
         'nvim-lua/plenary.nvim',
-        commit = '4b7e520',
       },
       {
         'nvim-telescope/telescope-fzf-native.nvim',
@@ -15,7 +14,6 @@ return {
         end,
       },
     },
-    event = 'VimEnter',
     config = function()
       require('telescope').setup()
       pcall(require('telescope').load_extension, 'fzf')
