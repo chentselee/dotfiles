@@ -7,7 +7,9 @@ return {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       {
         'nvimdev/lspsaga.nvim',
-        commit = 'b7b4777'
+        config = function()
+          require('lspsaga').setup()
+        end
       },
     },
     config = function()
@@ -21,7 +23,6 @@ return {
           nmap('gr', require('telescope.builtin').lsp_references)
           nmap('gi', require('telescope.builtin').lsp_implementations)
           nmap('gt', require('telescope.builtin').lsp_type_definitions)
-          nmap('gS', require('telescope.builtin').lsp_document_symbols)
           nmap('gS', require('telescope.builtin').lsp_document_symbols)
           nmap('<leader>rn', vim.lsp.buf.rename)
           nmap('<leader>ca', '<cmd>Lspsaga code_action<CR>')
