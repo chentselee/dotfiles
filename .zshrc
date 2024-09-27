@@ -172,3 +172,5 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export DENO_INSTALL="/home/chentse/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
+
+if [ -e /home/chentse/.nix-profile/etc/profile.d/nix.sh ]; then . /home/chentse/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
