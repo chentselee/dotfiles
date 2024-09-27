@@ -1,8 +1,4 @@
 return {
-  {
-    'windwp/nvim-ts-autotag',
-    opts = {},
-  },
   'airblade/vim-gitgutter',
   'tpope/vim-surround',
   'tpope/vim-unimpaired',
