@@ -98,9 +98,6 @@ command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls="ls -l"
 alias la="ls -la"
 alias y="yarn"
@@ -118,6 +115,15 @@ fi
 if command_exists rg; then
   alias grep="rg"
 fi
+
+# fzf
+if command_exists fzf; then
+  # shell integration
+  source <(fzf --zsh)
+  alias nzf='nvim $(fzf -m --preview="bat --color=always {}")'
+fi
+
+# initilize starship
 if command_exists starship; then
   eval "$(starship init zsh)"
 fi
@@ -172,5 +178,5 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export DENO_INSTALL="/home/chentse/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
-
 if [ -e /home/chentse/.nix-profile/etc/profile.d/nix.sh ]; then . /home/chentse/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
