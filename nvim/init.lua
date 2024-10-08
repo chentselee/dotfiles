@@ -3,9 +3,11 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- always use en
-vim.cmd([[
-language en_US
-]])
+if string.match(string.lower(vim.loop.os_uname().release), "wsl") then
+  vim.cmd([[
+  language en_US
+  ]])
+end
 
 -- line number
 vim.opt.number = true
