@@ -3,7 +3,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- always use en
-if string.match(string.lower(vim.loop.os_uname().release), "wsl") then
+if string.match(string.lower(vim.loop.os_uname().sysname), "darwin") then
   vim.cmd([[
   language en_US
   ]])
