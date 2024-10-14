@@ -1,7 +1,6 @@
 return {
   {
     'nvim-lualine/lualine.nvim',
-    commit       = 'fffbcb8',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config       = function()
       local lualine = require('lualine')
@@ -45,7 +44,7 @@ return {
             {
               'diagnostics',
               sources = { 'nvim_diagnostic' },
-              symbols = { error = ' ', warn = ' ', info = ' ' },
+              symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
             },
             {
               'filetype',
