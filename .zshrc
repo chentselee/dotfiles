@@ -94,24 +94,42 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+# hide hostname
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    prompt_segment black default "➤"
+  fi
+}
+
 command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
 
 alias ls="ls -l"
 alias la="ls -la"
-alias y="yarn"
-alias ys="yarn start"
-alias yt="yarn test"
-alias p="pnpm"
-alias pt="pnpm test"
+
+# git
+if command_exists git; then
+  alias git='LANG=en_US.UTF-8 git'
+fi
+
+# homebrew
+if [[ "${(L)$(uname)}" == *"linux"* ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+# bat
 if command_exists bat; then
   alias cat="bat -p"
 fi
+
+# eza
 if command_exists eza; then
   alias ls="eza -l"
   alias la="eza -la"
 fi
+
+# ripgrep
 if command_exists rg; then
   alias grep="rg"
 fi
@@ -123,60 +141,49 @@ if command_exists fzf; then
   alias nzf='nvim $(fzf -m --preview="bat --color=always {}")'
 fi
 
-# initilize starship
+# starship
 if command_exists starship; then
   eval "$(starship init zsh)"
 fi
 
-# git locale
-alias git='LANG=en_US.UTF-8 git'
+# nvm
+export NVM_DIR="$HOME/.nvm"
+# This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+if command_exists nvm; then
+  # This loads nvm bash_completion which also supports zsh (See https://github.com/nvm-sh/nvm/blob/master/bash_completion#L83-L97)
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+fi
 
 # yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+if command_exists yarn; then
+  alias y="yarn"
+  alias ys="yarn start"
+  alias yt="yarn test"
+fi
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
+if command_exists pnpm; then
+  alias p="pnpm"
+  alias pt="pnpm test"
+fi
 
-# go
-export PATH=$PATH:/usr/local/go/bin
-
-# GOPATH
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
-
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# hide hostname
-prompt_context() {
-  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "➤"
-  fi
-}
-
-# dotfiles config
-alias config="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
-
-# Android dev env
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
-# bun completions
-[ -s "/home/chentse/.bun/_bun" ] && source "/home/chentse/.bun/_bun"
+# deno
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+if command_exists bun; then
+  [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+fi
 
-# deno
-export DENO_INSTALL="/home/chentse/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-
-if [ -e /home/chentse/.nix-profile/etc/profile.d/nix.sh ]; then . /home/chentse/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+# go
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
 
