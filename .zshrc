@@ -101,21 +101,21 @@ prompt_context() {
   fi
 }
 
+alias ls="ls -l"
+alias la="ls -la"
+
+# neovim
+if [[ "${(L)$(uname)}" == *"linux"* ]]; then
+  export PATH="$PATH:/opt/nvim-linux64/bin"
+fi
+
 command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
 
-alias ls="ls -l"
-alias la="ls -la"
-
 # git
 if command_exists git; then
   alias git='LANG=en_US.UTF-8 git'
-fi
-
-# homebrew
-if [[ "${(L)$(uname)}" == *"linux"* ]]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 # bat
