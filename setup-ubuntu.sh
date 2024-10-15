@@ -34,7 +34,8 @@ done
 curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/SourceCodePro.zip
 mkdir -p ~/.local/share/fonts
 unzip SourceCodePro.zip -d ~/.local/share/fonts/SourceCodePro
-fc-cache -fv ~/.local/share/fonts
+fc-cache -fv ~/.local/share/fonts/SourceCodePro
+rm SourceCodePro.zip
 
 # development
 
