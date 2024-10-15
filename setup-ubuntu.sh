@@ -21,6 +21,9 @@ rm nvim-linux64.tar.gz
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 nix run home-manager -- switch --flake ~/dotfiles/home-manager#cz
 
+# tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 # stow
 stow_apps=('alacritty' 'nvim' 'starship' 'tmux' 'zsh')
 for app in ${stow_apps[@]}; do
