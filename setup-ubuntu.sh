@@ -25,7 +25,7 @@ nix run home-manager -- switch --flake ~/dotfiles/home-manager#cz
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # stow
-stow_apps=('alacritty' 'nvim' 'starship' 'tmux' 'zsh')
+stow_apps=('alacritty' 'nvim' 'starship' 'tmux' 'zsh' 'yazi')
 for app in ${stow_apps[@]}; do
   stow $app
 done
