@@ -88,6 +88,12 @@ endfunction
 ]])
 vim.keymap.set('n', '<leader>d', '<cmd>call NetrwMapping()<CR>')
 
+-- toggle quickfix list
+vim.keymap.set('n', '<C-q>', function()
+  local win_id = vim.fn.getqflist({ winid = 0 }).winid
+  vim.cmd(win_id > 0 and 'cclose' or 'copen')
+end)
+
 -- map
 vim.keymap.set('n', '<leader>q', '<cmd>q<CR>')
 vim.keymap.set('n', '<leader>s', '<cmd>w<CR>')
