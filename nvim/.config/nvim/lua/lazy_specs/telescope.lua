@@ -18,7 +18,7 @@ return {
       require('telescope').setup()
       pcall(require('telescope').load_extension, 'fzf')
       local builtin = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>th', builtin.builtin)
+      vim.keymap.set('n', '<leader>bi', builtin.builtin)
       vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find)
       vim.keymap.set('n', '<leader>ff', builtin.git_files)
       vim.keymap.set('n', '<leader>fs', builtin.find_files)
@@ -29,6 +29,7 @@ return {
       vim.keymap.set('v', '<leader>gs', builtin.grep_string)
       vim.keymap.set('n', '<leader>cs', builtin.colorscheme)
       vim.keymap.set('n', '<leader>km', builtin.keymaps)
+      vim.keymap.set('n', '<leader>ht', builtin.help_tags)
     end,
   }
 }

@@ -17,8 +17,8 @@ return {
         terminal:toggle()
       end
 
-      vim.api.nvim_set_keymap("n", "<C-t>", "<cmd>lua TerminalToggle()<CR>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("t", "<C-t>", "<cmd>lua TerminalToggle()<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<Leader>t", "<cmd>lua TerminalToggle()<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("t", "<Leader>t", "<cmd>lua TerminalToggle()<CR>", { noremap = true, silent = true })
 
       local lazygit = Terminal:new({
         cmd = "lazygit",
@@ -33,6 +33,7 @@ return {
       end
 
       vim.api.nvim_set_keymap("n", "<Leader>l", "<cmd>lua LazygitToggle()<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("t", "<Leader>l", "<cmd>lua LazygitToggle()<CR>", { noremap = true, silent = true })
     end,
   }
 }
