@@ -35,14 +35,10 @@ return {
       -- cmp
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-      local lspconfig = require('lspconfig')
       local servers = {
         -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
         ts_ls = {
           single_file_support = false,
-        },
-        denols = {
-          root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
         },
         gopls = {},
         lua_ls = {
@@ -81,7 +77,7 @@ return {
           function(server_name)
             local server = servers[server_name] or {}
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
+            vim.lsp.config[server_name].setup(server)
           end,
         },
       })
@@ -126,7 +122,8 @@ return {
         },
       }
 
-      require('lspconfig').efm.setup(vim.tbl_extend('force', efmls_config, {
+      vim.lsp.config('efm', vim.tbl_extend('force', efmls_config, {
+        cmd = { 'efm-langserver' },
         -- Pass your custom lsp config below like on_attach and capabilities
         -- on_attach = on_attach,
         -- capabilities = capabilities,
