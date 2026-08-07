@@ -104,9 +104,10 @@ prompt_context() {
 alias ls="ls -l"
 alias la="ls -la"
 
-# neovim
+# neovim, tree-sitter-cli
 if [[ "${(L)$(uname)}" == *"linux"* ]]; then
   export PATH="$PATH:/opt/nvim-linux64/bin"
+  export PATH="$PATH:/opt/tree-sitter/bin"
 fi
 
 command_exists() {
