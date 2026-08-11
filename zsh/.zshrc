@@ -106,7 +106,7 @@ alias la="ls -la"
 
 # neovim, tree-sitter-cli
 if [[ "${(L)$(uname)}" == *"linux"* ]]; then
-  export PATH="$PATH:/opt/nvim-linux64/bin"
+  export PATH="$PATH:/opt/nvim/bin"
   export PATH="$PATH:/opt/tree-sitter/bin"
 fi
 
