@@ -101,6 +101,7 @@ prompt_context() {
   fi
 }
 
+# ls, la
 alias ls="ls -l"
 alias la="ls -la"
 
@@ -188,3 +189,5 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 
+# mise
+eval "$(~/.nix-profile/bin/mise activate zsh)"
